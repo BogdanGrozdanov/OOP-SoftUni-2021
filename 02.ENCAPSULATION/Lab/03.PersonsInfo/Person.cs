@@ -48,9 +48,9 @@ namespace PersonsInfo
             {
                 return this.lastName;
             }
-            set
+            private set
             {
-                if (ValidateName(value))
+                if (value.Length < 3)
                 {
                     lastName = value;
                 }
@@ -66,7 +66,7 @@ namespace PersonsInfo
             {
                 return this.age;
             }
-            set
+            private set
             {
                 if (value > 0)
                 {
@@ -84,7 +84,7 @@ namespace PersonsInfo
             {
                 return this.salary;
             }
-            set
+            private set
             {
                 if (value < 460)
                 {
@@ -99,7 +99,7 @@ namespace PersonsInfo
         public void IncreaseSalary(decimal percentage)
         {
 
-            if (this.Age < 30)
+            if (this.Age <= 30)
             {
                 this.Salary = this.Salary * percentage / 200;
             }
