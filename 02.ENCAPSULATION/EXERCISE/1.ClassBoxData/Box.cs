@@ -15,14 +15,8 @@ namespace ClassBoxData
             }
             private set
             {
-                if (ValidateData(value))
-                {
-                    height = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Height cannot be zero or negative.");
-                }
+                this.TrowIfInvalidateSide(value, nameof(this.Height));
+                this.height = value;
             }
         }
         public double Width
@@ -33,15 +27,9 @@ namespace ClassBoxData
             }
             private set
             {
-                if (ValidateData(value))
-                {
-                    width = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Width cannot be zero or negative.");
-                }
-            }
+                this.TrowIfInvalidateSide(value, nameof(this.Width));
+                this.width = value;
+                            }
         }
         public double Length
         {
@@ -51,15 +39,8 @@ namespace ClassBoxData
             }
             private set
             {
-                if (ValidateData(value))
-                {
-                    length = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Length cannot be zero or negative.");
-                    
-                }
+                this.TrowIfInvalidateSide(value, nameof(Length));
+                this.length = value;
             }
 
         }
@@ -70,21 +51,24 @@ namespace ClassBoxData
             this.Height = height;
         }
 
-        public double SurfaceArea(Box box)
+        public double SurfaceArea()
         {
             return (2 * this.Length * this.Width) + (2 * this.Length * this.Height) + (2 * this.Width * this.Height);
         }
-        public double LateralSurfaceArea(Box box)
+        public double LateralSurfaceArea()
         {
             return (2 * this.Length * this.Height) + (2 * this.Width * this.Height);
         }
-        public double Volume(Box box)
+        public double Volume()
         {
             return this.Length * this.Width * this.Height;
         }
-        private bool ValidateData(double data)
+        private void TrowIfInvalidateSide(double value, string side)
         {
-            return data > 0;
+            if (value <= 0)
+            {
+                throw new ArgumentException($"{side} cannot be zero or negative.");
+            }
         }
     }
 }
