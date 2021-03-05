@@ -11,21 +11,15 @@ namespace ClassBoxData
             try
             {
                 Box box = new Box(lenght, width, height);
-
-                double surfaceArea = box.SurfaceArea(box);
-                double lateralSurfaceArea = box.LateralSurfaceArea(box);
-                double volume = box.Volume(box);
-
-                Console.WriteLine($"Surface Area - {surfaceArea:f2}");
-                Console.WriteLine($"Lateral Surface Area - {lateralSurfaceArea:f2}");
-                Console.WriteLine($"Volume - {volume:f2}");
+                Console.WriteLine($"Surface Area - {box.SurfaceArea():f2}");
+                Console.WriteLine($"Lateral Surface Area - {box.LateralSurfaceArea():f2}");
+                Console.WriteLine($"Volume - {box.Volume():f2}");
             }
-            catch ( ArgumentException ex)
+            catch (ArgumentException ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
-            
+
         }
 
     }
